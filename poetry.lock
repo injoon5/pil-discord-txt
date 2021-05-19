@@ -20,17 +20,6 @@ version = "0.4.4"
 
 [[package]]
 category = "main"
-description = "Emoji for Python"
-name = "emoji"
-optional = false
-python-versions = "*"
-version = "1.2.0"
-
-[package.extras]
-dev = ["pytest", "coverage", "coveralls"]
-
-[[package]]
-category = "main"
 description = "A simple framework for building complex web applications."
 name = "flask"
 optional = false
@@ -89,7 +78,7 @@ version = "2.0.1"
 watchdog = ["watchdog"]
 
 [metadata]
-content-hash = "80e6590b658087ef03a35425a8afae17c1960ce7fb62b81d6f3fd23f99a7297d"
+content-hash = "2a2ed846712d5ed59b440afbcef59b912b705a5d42b3b51eb2d6576678261a73"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -100,10 +89,6 @@ click = [
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
-]
-emoji = [
-    {file = "emoji-1.2.0-py3-none-any.whl", hash = "sha256:6b19b65da8d6f30551eead1705539cc0eadcd9e33a6ecbc421a29b87f96287eb"},
-    {file = "emoji-1.2.0.tar.gz", hash = "sha256:496f432058567985838c13d67dde84ca081614a8286c0b9cdc7d63dfa89d51a3"},
 ]
 flask = [
     {file = "Flask-2.0.0-py3-none-any.whl", hash = "sha256:1833a4b36ace08dfa1510d86f1bb6fc595d990ec1b838e03ac8dd80ac0705954"},

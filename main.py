@@ -9,7 +9,6 @@ def page_not_found(error):
   gen("!")
   return send_file('pil_text.png', download_name='Fatal error!!!.jpg')
 
-
 @app.route('/g/<text>', strict_slashes=False)
 def gen_page(text):
   if len(text) > 1:

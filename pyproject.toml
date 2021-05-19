@@ -1,13 +1,12 @@
 [tool.poetry]
-name = "repl_python3_beta_pil-discord-txt"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+name = "pil-discord-txt"
+version = "0.1.5"
+description = "A cool tool to make your char to a png!"
+authors = ["Injoon Oh <injoon5@naver.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 flask = "^2.0.0"
-emoji = "^1.2.0"
 
 [tool.poetry.dev-dependencies]
 
