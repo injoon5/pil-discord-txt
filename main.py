@@ -1,5 +1,6 @@
 from flask import Flask, send_file, request
 from textimg import gen
+import os
 
 app = Flask('Discord Text Image')
 gen(" ")
