@@ -1,6 +1,5 @@
 from flask import Flask, send_file, request
 from textimg import gen
-import os
 
 app = Flask('Discord Text Image')
 gen(" ")
@@ -39,4 +38,4 @@ def gen_page(text):
   gen(text, color, font)
   return send_file('pil_text.png', download_name='Created with pil-discord-txt.png')
 
-app.run(port=os.getenv("PORT", default=5000))
+app.run(host='0.0.0.0', port=8080)
