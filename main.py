@@ -4,8 +4,8 @@ from textimg import gen
 app = Flask('Discord Text Image')
 gen(" ")
 
-fonts = ["nanum", "lotte", "gungseo", "plexsans", "gugi", "noto", "hannuri", "krfr-type", "seoulnamsan", "slei", "spoqa"]
-colors = ["original", "red", "green", "yellow", "blue", "pink", "grey"]
+fonts = ["nanum", "lotte", "gungseo", "plexsans", "gugi", "krnuri", "krfr-type", "seoulnamsan", "slei", "spoqa"]
+colors = ["original", "red", "green", "yellow", "blue", "pink", "grey", "white", "black", "blurple_old", "blurple"]
 
 @app.errorhandler(404)
 def page_not_found(error):
