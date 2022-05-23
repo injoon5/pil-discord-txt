@@ -1,41 +1,41 @@
-from flask import Flask, send_file, request
+from typing import Optional
+import uvicorn
+from fastapi import FastAPI
+from fastapi.responses import FileResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
+from starlette.requests import Request
 from textimg import gen
+from urllib.parse import unquote
 
-app = Flask('Discord Text Image')
+
+app = FastAPI(title="Discord txt to img",
+    description="It makes a image by the text **YOU** want!!",
+    version="0.1.5")
+
+app.mount("/assets", StaticFiles(directory="assets"), name="assets")
+
 gen(" ")
 
 fonts = ["nanum", "lotte", "gungseo", "plexsans", "gugi", "krnuri", "krfr-type", "seoulnamsan", "slei", "spoqa"]
 colors = ["original", "red", "green", "yellow", "blue", "pink", "grey", "white", "black", "blurple_old", "blurple"]
 
-@app.errorhandler(404)
-def page_not_found(error):
-  gen("404 Not Found")
-  return send_file('pil_text.png', download_name='Fatal error!!!.png')
-@app.route('/g/<hh>')
-def moved(hh):
-  gen("g를 빼고 요청해주세요.")
-  return send_file('pil_text.png', download_name="checkaddress.png")
-@app.route('/<string:text>')
-
-@app.route('/<string:text>')
-@app.route('/', defaults={ "text": "텍스트 확인" })
-def gen_page(text):
-  #text = request.path.split("/")[2]
-  font = "nanum"
-  color = "original"
-  if "font" in request.args.to_dict():
-    font = request.args.to_dict()["font"]
-  if "color" in request.args.to_dict():
-    color = request.args.to_dict()["color"] 
-  
+@app.get('/{text}')
+def img_generation_endpoint(text, font: Optional[str] = "nanum", color: Optional[str] = "original"):
+  #text = unquote(text.__dict__['scope']['path_params']["text"])
   if (color not in colors or font not in fonts) or (color not in colors and font not in fonts):
     gen("요청이 잘못되었습니다. ")
-    return send_file('pil_text.png', download_name='Fatal error!!!.png')
+    return FileResponse('pil_text.png')
   if len(text) > 10:
     gen("10자 까지만 허용")
-    return send_file('pil_text.png', download_name='Fatal error!!!.png')
-
+    return FileResponse('pil_text.png')
+  
   gen(text, color, font)
-  return send_file('pil_text.png', download_name='Created with pil-discord-txt.png')
+  return FileResponse('pil_text.png')
 
-app.run(host='0.0.0.0', port=8080)
+@app.get('/g/{text}')
+def moved(text, reqfont: Optional[str] = "nanum", reqcolor: Optional[str] = "original"):
+  return RedirectResponse(url=f'/{text}?font={reqfont}&color={reqcolor}')
+
+
+if __name__ == "__main__":
+    uvicorn.run(app,host="0.0.0.0",port="8080")
